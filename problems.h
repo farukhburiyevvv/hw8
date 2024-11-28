@@ -44,12 +44,13 @@ int *reallocate(int *arr,int N,int n) {
     return v;
 }
 
-int **transpose(int **arr,int n,int m) {
-    int **arr2[m][n];
-    for (int i=0; i<m; i++) {
-        for (int j=0; j<n; j++) {
-            *arr2[i][j] = &arr[i][j];
-        }
-    }
-    return **arr2;
+int **transposed(int **arr, int n, int m) {
+    int **newArr = new int*[m];
+    
+    
+    return newArr;
 }
+void deallocateMatrix(int**& matrix, int rows) {
+    
+}
+
