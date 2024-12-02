@@ -27,31 +27,34 @@ int* allocateAndSet(int a, int b) {
     int size = b-a+1;
     int* v = new int[size];
     for (int i=a; i<b; i++) {
-        v[i-a] = i;}
+        v[i-a] = i;
+
+    }
     return v;
 }
 
 void deallocate(int *arr) {
     delete[] arr;
-    arr = nullptr;
 }
 
 int *reallocate(int *arr,int N,int n) {
     int size = N-n;
-    int *v = new int[N];
+    int *v = new int[N-n];
     for (int i=0; i<size; i++) {
         v[i] = arr[i+n];
     }
     return v;
 }
-
-int **transposed(int **arr, int n, int m) {
-    int **newArr = new int*[m];
-    
-    
-    return newArr;
+int **transpose(int **arr,int n,int m) {
+    int **arr2[m][n];
+    for (int i=0; i<m; i++) {
+        for (int j=0; j<n; j++) {
+            *arr2[i][j] = &arr[i][j];
+        }
+    }
+    return **arr2;
 }
+
 void deallocateMatrix(int**& matrix, int rows) {
     
 }
-
