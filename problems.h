@@ -1,60 +1,85 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
 using namespace std;
 
-void delete11(vector<int> &v) {
-    for (int i:v) {
-        if (i%11 == 0) v.erase(remove(v.begin(), v.end(), i), v.end());
-    }
-}
+// Problem 1
 
-void insertMany(vector <int> &v, int a, int b) {
-    int s = v.size();
-    if (s%2 ==1) {
-       for (int i=0; i<a; i++) {
-           v.insert(v.begin()+s/2+1, b);
+void delete11 ( vector < int > & v )
+{
+    int i = 0;
+    while ( i < v.size ()) {
+       if (v[i] % 11 == 0) {
+           v.erase( v.begin() + i );
        }
-    } else {
-        for (int i=0; i<a; i++) {
-            v.insert(v.begin()+s/2, b);
+       else {
+            i++;
         }
+   }
+}
+
+// Problem 2
+
+void insertMany ( vector < int > &v , int a , int b )
+{
+    int size = v.size();
+    if (size % 2 == 0) {
+        size = size / 2;
+    }
+    else {
+        size = (size + 1) / 2;
+    }
+    for (int i = 0; i < a; i++)
+    {
+        v.insert( v.begin() + size, b );
     }
 }
 
-int* allocateAndSet(int a, int b) {
-    if (a>b) return nullptr;
-    int size = b-a+1;
-    int* v = new int[size];
-    for (int i=a; i<b; i++) {
-        v[i-a] = i;
+// Problem 3
 
+int* allocateAndSet(int a, int b)
+{
+    int size = b - a + 1;
+    if ( a > b ) return NULL;
+    int* arr = new int[size];
+    for (int i = 0; i < size; i++) {
+        *(arr + i) = a;
+        ++a;
     }
-    return v;
+    return arr;
 }
-
-void deallocate(int *arr) {
+void deallocate(int* arr)
+{
     delete[] arr;
     arr = nullptr;
 }
 
-int *reallocate(int *arr,int N,int n) {
-    int size = N-n;
-    int *v = new int[N-n];
-    for (int i=0; i<size; i++) {
-        v[i] = arr[i+n];
+// Problem 4
+
+int*reallocate(int *arr, int N, int n)
+{
+    int newSize = N - n;
+    int *newArr = new int[newSize];
+    for (int i = 0; i < newSize; i++)
+    {
+        *(newArr + i) = *(arr + i + n);
     }
-    return v;
+    delete[] arr;
+    return newArr;
 }
 
-int **transpose(int **arr,int n,int m) {
-    int **arr2[m][n];
-    for (int i=0; i<m; i++) {
-        for (int j=0; j<n; j++) {
-            *arr2[i][j] = &arr[i][j];
+// Problem 5
+
+int **transposed(int **arr, int n, int m) {
+    int **newArr = new int*[m];
+    for (int i = 0; i < m; i++) {
+        newArr[i] = new int[n];
+    }
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            newArr[j][i] = arr[i][j];
         }
     }
-    return **arr2;
+
+    return newArr;
 }
 void deallocateMatrix(int**& matrix, int rows) {
     for (int i = 0; i < rows; i++) {
