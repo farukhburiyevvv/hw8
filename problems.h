@@ -2,17 +2,10 @@ using namespace std;
 
 // Problem 1
 
-void delete11 ( vector < int > & v )
-{
-    int i = 0;
-    while ( i < v.size ()) {
-       if (v[i] % 11 == 0) {
-           v.erase( v.begin() + i );
-       }
-       else {
-            i++;
-        }
-   }
+void delete11(vector<int> &v) {
+    for (int i:v) {
+        if (i%11 == 0) v.erase(remove(v.begin(), v.end(), i), v.end());
+    }
 }
 
 // Problem 2
