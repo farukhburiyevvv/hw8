@@ -1,8 +1,3 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-using namespace std;
-
 void delete11(vector<int> &v) {
     for (int i:v) {
         if (i%11 == 0) v.erase(remove(v.begin(), v.end(), i), v.end());
