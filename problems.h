@@ -10,21 +10,18 @@ void delete11(vector<int> &v) {
 
 // Problem 2
 
-void insertMany ( vector < int > &v , int a , int b )
-{
-    int size = v.size();
-    if (size % 2 == 0) {
-        size = size / 2;
-    }
-    else {
-        size = (size + 1) / 2;
-    }
-    for (int i = 0; i < a; i++)
-    {
-        v.insert( v.begin() + size, b );
+void insertMany(vector <int> &v, int a, int b) {
+    int s = v.size();
+    if (s%2 ==1) {
+       for (int i=0; i<a; i++) {
+           v.insert(v.begin()+s/2+1, b);
+       }
+    } else {
+        for (int i=0; i<a; i++) {
+            v.insert(v.begin()+s/2, b);
+        }
     }
 }
-
 // Problem 3
 
 int* allocateAndSet(int a, int b)
