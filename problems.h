@@ -1,3 +1,8 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
 void delete11(vector<int> &v) {
     for (int i:v) {
         if (i%11 == 0) v.erase(remove(v.begin(), v.end(), i), v.end());
@@ -28,6 +33,7 @@ int* allocateAndSet(int a, int b) {
 
 void deallocate(int *arr) {
     delete[] arr;
+    arr = nullptr;
 }
 
 int *reallocate(int *arr,int N,int n) {
