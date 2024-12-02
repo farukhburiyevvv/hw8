@@ -35,6 +35,7 @@ int* allocateAndSet(int a, int b) {
 
 void deallocate(int *arr) {
     delete[] arr;
+    arr = nullptr;
 }
 
 int *reallocate(int *arr,int N,int n) {
