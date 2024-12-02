@@ -45,6 +45,7 @@ int *reallocate(int *arr,int N,int n) {
     }
     return v;
 }
+
 int **transpose(int **arr,int n,int m) {
     int **arr2[m][n];
     for (int i=0; i<m; i++) {
@@ -54,7 +55,10 @@ int **transpose(int **arr,int n,int m) {
     }
     return **arr2;
 }
-
 void deallocateMatrix(int**& matrix, int rows) {
-    
+    for (int i = 0; i < rows; i++) {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+    matrix = nullptr;
 }
